@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- ВНИМАНИЕ! НЕ РЕКОМЕНДУЕТСЯ ИЗМЕНЯТЬ! -->
+<!-- Список параметров элементов. -->
+<!-- Включая тип, значение по умлочанию, ограничения параметров.  -->
+
+<Elements>
+
+  <!-- Кабельная линия -->
+  <Element Code="WC">
+    <Text>Кабельная линия</Text>
+    <Description>Схемное обозначение кабельной линии</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>WC</DefaultValue>
+      </Parameter>
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Тип кабельной линии</Description>
+        <DefaultValue>АВВГ</DefaultValue>
+      </Parameter>
+      <Parameter Name="S">
+        <Type>double</Type>
+        <Text>Sж, мм2</Text>
+        <Description>Сечение одной жилы кабеля, мм2</Description>
+        <DefaultValue>95</DefaultValue>
+        <MaxValue>800</MaxValue>
+        <MinValue>0.5</MinValue>
+      </Parameter>
+      <Parameter Name="L">
+        <Type>double</Type>
+        <Text>Длина, м</Text>
+        <Description>Длина кабеля (по жиле одного полюса), м</Description>
+        <DefaultValue>10</DefaultValue>
+        <MaxValue>5000</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="N">
+        <Type>int</Type>
+        <Text>N, кб</Text>
+        <Description>Количество кабелей в линии (в "пучке")</Description>
+        <DefaultValue>1</DefaultValue>
+        <MaxValue>20</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="R0">
+        <Type>double</Type>
+        <Text>R, мОм·мм2/м</Text>
+        <Description>Удельное сопротивление жил кабеля при 20°С, мОм·мм2/м</Description>
+        <DefaultValue>35.386</DefaultValue>
+        <MaxValue>77</MaxValue>
+        <MinValue>0.01</MinValue>
+      </Parameter>
+      <Parameter Name="KLOAD">
+        <Type>double</Type>
+        <Text>Кзагр, о.е.</Text>
+        <Description>Коэффициент загрузки кабеля при ном. темп-ре окр. среды относительно длительно допустимого тока, о.е.</Description>
+        <DefaultValue>0.6</DefaultValue>
+        <MaxValue>1.3</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="TENV">
+        <Type>double</Type>
+        <Text>Токр, °C</Text>
+        <Description>Температура окружающей среды по место прокладки кабеля, °C</Description>
+        <DefaultValue>25</DefaultValue>
+        <MaxValue>65</MaxValue>
+        <MinValue>-40</MinValue>
+      </Parameter>
+      <Parameter Name="TN">
+        <Type>double</Type>
+        <Text>Тдл.доп., °C</Text>
+        <Description>Температура изоляции длительно допустимая, °C</Description>
+        <DefaultValue>65</DefaultValue>
+        <MaxValue>120</MaxValue>
+        <MinValue>50</MinValue>
+      </Parameter>
+      <Parameter Name="TMAX1">
+        <Type>double</Type>
+        <Text>Ттс, °C</Text>
+        <Description>Температура изоляции предельная по термической стойкости кабеля, °C</Description>
+        <DefaultValue>160</DefaultValue>
+        <MaxValue>300</MaxValue>
+        <MinValue>80</MinValue>
+      </Parameter>
+      <Parameter Name="TMAX2">
+        <Type>double</Type>
+        <Text>Тнв, °C</Text>
+        <Description>Температура изоляции предельная по невозгорвемости кабеля, °C</Description>
+        <DefaultValue>360</DefaultValue>
+        <MaxValue>500</MaxValue>
+        <MinValue>200</MinValue>
+      </Parameter>
+      <Parameter Name="KC">
+        <Type>int</Type>
+        <Text>Ксоед</Text>
+        <Description>Количество разборных контактных соединений по длине одной жилы</Description>
+        <DefaultValue>1</DefaultValue>
+        <MaxValue>50</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rсоед, мОм</Text>
+        <Description>Сопротивление одного разборного контактного соединения, мОм</Description>
+        <DefaultValue>0.027</DefaultValue>
+        <MaxValue>0.5</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="MATERIAL">
+        <Type>string</Type>
+        <Text>Материал жилы</Text>
+        <Description>Материал из которой изготовлены жилы кабеля</Description>
+        <DefaultValue>Al</DefaultValue>
+        <PossibleValues>
+          <Value>настраиваемый</Value>
+          <Value>Al</Value>
+          <Value>Cu</Value>
+        </PossibleValues>
+      </Parameter>
+      <Parameter Name="ALPHA">
+        <Type>double</Type>
+        <Text>alpha, 1/°C</Text>
+        <Description>Температурный коэффициент токопроводящих жил, 1/°C</Description>
+        <DefaultValue>0.004</DefaultValue>
+        <MaxValue>0.5</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="BETA">
+        <Type>double</Type>
+        <Text>beta</Text>
+        <Description>Параметр по ГОСТ 28895-91</Description>
+        <DefaultValue>228</DefaultValue>
+        <MaxValue>400</MaxValue>
+        <MinValue>100</MinValue>
+      </Parameter>
+      <Parameter Name="K">
+        <Type>double</Type>
+        <Text>K</Text>
+        <Description>Параметр по ГОСТ 28895-91</Description>
+        <DefaultValue>148</DefaultValue>
+        <MaxValue>300</MaxValue>
+        <MinValue>40</MinValue>
+      </Parameter>
+      <Parameter Name="F">
+        <Type>double</Type>
+        <Text>F</Text>
+        <Description>Параметр по ГОСТ 28895-91</Description>
+        <DefaultValue>0.7</DefaultValue>
+        <MaxValue>0.9</MaxValue>
+        <MinValue>0.5</MinValue>
+      </Parameter>
+      <Parameter Name="A">
+        <Type>double</Type>
+        <Text>A</Text>
+        <Description>Параметр по ГОСТ 28895-91</Description>
+        <DefaultValue>0.5747</DefaultValue>
+        <MaxValue>0.9</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+      <Parameter Name="B">
+        <Type>double</Type>
+        <Text>B</Text>
+        <Description>Параметр по ГОСТ 28895-91</Description>
+        <DefaultValue>0.1659</DefaultValue>
+        <MaxValue>0.9</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+    </Parameters>
+    <DisableRules>
+      <Rule>
+        <Condition>p["MATERIAL"] != "настраиваемый"</Condition>
+        <AffectedFields>
+          <Field>ALPHA</Field>
+          <Field>BETA</Field>
+          <Field>K</Field>
+          <Field>F</Field>
+          <Field>A</Field>
+          <Field>B</Field>
+        </AffectedFields>
+      </Rule>
+    </DisableRules>    
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Кабельная линия.rtf</HelpLink>  
+  </Element>
+
+  <!-- Шинопровод -->
+  <Element Code="BUS">
+    <Text>Шинопровод</Text>
+    <Description>Схемное обозначение проводника</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>BUS</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Сплав</Text>
+        <Description>Материал проводника</Description>
+        <DefaultValue>Медь</DefaultValue>
+      </Parameter>
+      <Parameter Name="L">
+        <Type>double</Type>
+        <Text>l, м</Text>
+        <Description>Длина проводника одного полюса</Description>
+        <DefaultValue>5</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="S">
+        <Type>double</Type>
+        <Text>S, мм2</Text>
+        <Description>Сечение проводящего элемента одного полюса</Description>
+        <DefaultValue>95</DefaultValue>
+        <MaxValue>625</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="R0">
+        <Type>double</Type>
+        <Text>R, мОм/м</Text>
+        <Description>Удельное сопротивление метра одной жилы проводника</Description>
+        <DefaultValue>0.342</DefaultValue>
+        <MaxValue>50</MaxValue>
+        <MinValue>0.01</MinValue>
+      </Parameter>
+      <Parameter Name="KC">
+        <Type>int</Type>
+        <Text>Kсоед.</Text>
+        <Description>Количество разъемных соединений по длине одного полюса</Description>
+        <DefaultValue>2</DefaultValue>
+        <MaxValue>20</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rc, мОм</Text>
+        <Description>Сопротивление одного разъемного соединения</Description>
+        <DefaultValue>0.003</DefaultValue>
+        <MaxValue>1</MaxValue>
+        <MinValue>0.0</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Шинопровод.rtf</HelpLink>  
+  </Element>
+
+  <!-- Автоматический выключатель -->
+  <Element Code="QF">
+    <Text>Автоматический выключатель</Text>
+    <Description>Схемное обозначение автоматического выключателя</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>QF</DefaultValue>
+      </Parameter>
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение типа автоматического выключателя</Description>
+        <DefaultValue>А3794С</DefaultValue>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток расцепителя АВ (если нет - ном.ток АВ)</Description>
+        <DefaultValue>630</DefaultValue>
+        <MaxValue>3000</MaxValue>
+        <MinValue>1.5</MinValue>
+      </Parameter>
+      <Parameter Name="R1">
+        <Type>double</Type>
+        <Text>R, мОм</Text>
+        <Description>Сопротивление одного полюса расцепителя АВ</Description>
+        <DefaultValue>0.12</DefaultValue>
+        <MaxValue>5000</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rc, мОм</Text>
+        <Description>Сопротивление разъемных контактов полюса выключателя</Description>
+        <DefaultValue>0.25</DefaultValue>
+        <MaxValue>20</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="KP">
+        <Type>double</Type>
+        <Text>Кпол.</Text>
+        <Description>Коэффициент (количество) полюсов включенных в цепь</Description>
+        <DefaultValue>2.0</DefaultValue>
+        <MaxValue>2</MaxValue>
+        <MinValue>0.25</MinValue>
+      </Parameter>
+      <Parameter Name="ISC">
+        <Type>double</Type>
+        <Text>Iмтз, о.е.</Text>
+        <Description>Уставка максимальной токовой защиты (если нет - 0)</Description>
+        <DefaultValue>7.0</DefaultValue>
+        <MaxValue>12</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="IOVR">
+        <Type>double</Type>
+        <Text>Iтепл, о.е.</Text>
+        <Description>Уставка защиты от перегрузки (если нет - 0)</Description>
+        <DefaultValue>1.25</DefaultValue>
+        <MaxValue>2</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Автоматический выключатель.rtf</HelpLink>  
+  </Element>
+
+  <!-- Рубильник -->
+  <Element Code="QS">
+    <Text>Рубильник</Text>
+    <Description>Схемное обозначение рубильника</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>QS</DefaultValue>
+      </Parameter>
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение типа рубильника</Description>
+        <DefaultValue/>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток рубильника</Description>
+        <DefaultValue>1000</DefaultValue>
+        <MaxValue>3000</MaxValue>
+        <MinValue>50</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rc, мОм</Text>
+        <Description>Сопротивление разъемных контактов полюса рубильника</Description>
+        <DefaultValue>0.003</DefaultValue>
+        <MaxValue>25.0</MaxValue>
+        <MinValue>0.001</MinValue>
+      </Parameter>
+      <Parameter Name="KP">
+        <Type>double</Type>
+        <Text>Кпол.</Text>
+        <Description>Коэффициент количества полюсов включенных в цепь</Description>
+        <DefaultValue>2.0</DefaultValue>
+        <MaxValue>2</MaxValue>
+        <MinValue>0.25</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Рубильник.rtf</HelpLink>
+  </Element>
+
+  <!-- Предохранитель -->
+  <Element Code="FU">
+    <Text>Предохранитель</Text>
+    <Description>Схемное обозначение предохранителя</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>FU</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение типа предохранителя</Description>
+        <DefaultValue>НПН2-60</DefaultValue>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток плавкой вставки предохранителя</Description>
+        <DefaultValue>25</DefaultValue>
+        <MaxValue>3000</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="R">
+        <Type>double</Type>
+        <Text>R, мОм</Text>
+        <Description>Сопротивление вставки</Description>
+        <DefaultValue>16</DefaultValue>
+        <MaxValue>300</MaxValue>
+        <MinValue>0.003</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rc, мОм</Text>
+        <Description>Сопротивление контактов</Description>
+        <DefaultValue>0.186</DefaultValue>
+        <MaxValue>1.0</MaxValue>
+        <MinValue>0.001</MinValue>
+      </Parameter>
+      <Parameter Name="KP">
+        <Type>double</Type>
+        <Text>Кпол.</Text>
+        <Description>Количество полюсов с предохранителем</Description>
+        <DefaultValue>2.0</DefaultValue>
+        <MaxValue>2</MaxValue>
+        <MinValue>0.25</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Предохранитель.rtf</HelpLink>  
+  </Element>
+
+  <!-- Аккумуляторная батарея -->
+  <Element Code="GB">
+    <Text>Аккумуляторная батарея</Text>
+    <Description>Схемное обозначение аккумуляторной батареи</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>GB</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение типа аккумуляторной батареи</Description>
+        <DefaultValue>СК-10</DefaultValue>
+      </Parameter>
+      <Parameter Name="C10">
+        <Type>double</Type>
+        <Text>Qн, А*час</Text>
+        <Description>Номинальная емкость аккумуляторной батареи</Description>
+        <DefaultValue>360</DefaultValue>
+        <MaxValue>3500</MaxValue>
+        <MinValue>20</MinValue>
+      </Parameter>
+      <Parameter Name="NE">
+        <Type>int</Type>
+        <Text>Nэл</Text>
+        <Description>Число последовательно включенных элементов (моноблоков)</Description>
+        <DefaultValue>108</DefaultValue>
+        <MaxValue>50</MaxValue>
+        <MinValue>250</MinValue>
+      </Parameter>
+      <Parameter Name="E1">
+        <Type>double</Type>
+        <Text>E', В</Text>
+        <Description>ЭДС первого участка ВАХ элемента</Description>
+        <DefaultValue>1.93</DefaultValue>
+        <MaxValue>15</MaxValue>
+        <MinValue>1.2</MinValue>
+      </Parameter>
+      <Parameter Name="R1">
+        <Type>double</Type>
+        <Text>R', мОм*А*ч</Text>
+        <Description>Удельное внутреннее сопротивление 1-го участка ВАХ элемента</Description>
+        <DefaultValue>194.40</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>50</MinValue>
+      </Parameter>
+      <Parameter Name="E2">
+        <Type>double</Type>
+        <Text>E", В</Text>
+        <Description>ЭДС второго участка ВАХ элемента</Description>
+        <DefaultValue>1.70</DefaultValue>
+        <MaxValue>15</MaxValue>
+        <MinValue>1.2</MinValue>
+      </Parameter>
+      <Parameter Name="R2">
+        <Type>double</Type>
+        <Text>R", мОм*А*ч</Text>
+        <Description>Удельное внутреннее сопротивление 2-го участка ВАХ элемента</Description>
+        <DefaultValue>144.00</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>50</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rэк, мОм</Text>
+        <Description>Сопротивление элементного коммутатора АБ (если нет - 0)</Description>
+        <DefaultValue>5.00</DefaultValue>
+        <MaxValue>100</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="E" X="0" Y="-50" />
+    </Terminals>
+    <HelpLink>Аккумуляторная батарея.rtf</HelpLink>  
+  </Element>
+
+  <!-- Выпрямитель -->
+  <Element Code="VD">
+    <Text>Выпрямитель</Text>
+    <Description>Схемное обозначение зарядно-подзарядного агрегата</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>VD</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение зарядно-подзарядного агрегата</Description>
+        <DefaultValue>УЗП</DefaultValue>
+      </Parameter>
+      <Parameter Name="UNOM">
+        <Type>double</Type>
+        <Text>Uвых, В</Text>
+        <Description>Установленное выходное напряжение агрегата</Description>
+        <DefaultValue>270</DefaultValue>
+        <MaxValue>360</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток зарядно-подзарядного агрегата</Description>
+        <DefaultValue>200</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="UMIN">
+        <Type>double</Type>
+        <Text>Uмин, В</Text>
+        <Description>Нижняя граница регулирования выходного напряжения</Description>
+        <DefaultValue>0</DefaultValue>
+        <MaxValue>360</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="UMAX">
+        <Type>double</Type>
+        <Text>Uмакс, В</Text>
+        <Description>Верхняя граница регулирования выходного напряжения</Description>
+        <DefaultValue>270</DefaultValue>
+        <MaxValue>360</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="ILIM">
+        <Type>double</Type>
+        <Text>Iогр,  А</Text>
+        <Description>Верхняя граница агрегата по выходному току</Description>
+        <DefaultValue>212</DefaultValue>
+        <MaxValue>1200</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Выпрямитель.rtf</HelpLink>  
+  </Element>
+
+  <!-- Инвертор -->
+  <Element Code="UZ">
+    <Text>Инвертор</Text>
+    <Description>Схемное обозначение АБП</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>UZ</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение АБП</Description>
+        <DefaultValue>АБП-3</DefaultValue>
+      </Parameter>
+      <Parameter Name="PLOAD">
+        <Type>double</Type>
+        <Text>Pнг, кВт</Text>
+        <Description>Мощность подключенных к АБП нагрузок</Description>
+        <DefaultValue>1.5</DefaultValue>
+        <MaxValue>2000</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+    </Terminals>
+    <HelpLink>Инвертор.rtf</HelpLink>  
+  </Element>
+
+  <!-- Стабилизатор напряжения -->
+  <Element Code="UV">
+    <Text>Стабилизатор напряжения</Text>
+    <Description>Схемное обозначение тиристорного стабилизатора напряжения</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>UV</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение стабилизатора</Description>
+        <DefaultValue>УТСП</DefaultValue>
+      </Parameter>
+      <Parameter Name="UNOM">
+        <Type>double</Type>
+        <Text>Uном, В</Text>
+        <Description>Номинальное напряжение стабилизатора</Description>
+        <DefaultValue>230</DefaultValue>
+        <MaxValue>360</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток стабилизатора</Description>
+        <DefaultValue>200</DefaultValue>
+        <MaxValue>1200</MaxValue>
+        <MinValue>20</MinValue>
+      </Parameter>
+      <Parameter Name="K">
+        <Type>double</Type>
+        <Text>K</Text>
+        <Description>Параметр внешней вольт-амперной характеристики</Description>
+        <DefaultValue>1.0</DefaultValue>
+        <MaxValue>6</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Стабилизатор напряжения.rtf</HelpLink>  
+  </Element>
+
+  <!-- Шунт -->
+  <Element Code="RS">
+    <Text>Шунт</Text>
+    <Description>Схемное обозначение шунта</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>RS</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение шунта</Description>
+        <DefaultValue/>
+      </Parameter>
+      <Parameter Name="INOM">
+        <Type>double</Type>
+        <Text>Iном, А</Text>
+        <Description>Номинальный ток шунта</Description>
+        <DefaultValue>200</DefaultValue>
+        <MaxValue>1200</MaxValue>
+        <MinValue>20</MinValue>
+      </Parameter>
+      <Parameter Name="R">
+        <Type>double</Type>
+        <Text>R, мОм</Text>
+        <Description>Собственное сопротивление шунта</Description>
+        <DefaultValue>1</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>0.001</MinValue>
+      </Parameter>
+      <Parameter Name="RC">
+        <Type>double</Type>
+        <Text>Rc, мОм</Text>
+        <Description>Сопротивление болтовых контактных соединений</Description>
+        <DefaultValue>0.003</DefaultValue>
+        <MaxValue>0.01</MaxValue>
+        <MinValue>0.001</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+      <Terminal Name="E" X="0" Y="50" />
+    </Terminals>
+    <HelpLink>Шунт.rtf</HelpLink>  
+  </Element>
+
+  <!-- Генератор -->
+  <Element Code="G">
+    <Text>Генератор</Text>
+    <Description>Схемное обозначение зарядного мотор-генератора</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>G</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение генератора</Description>
+        <DefaultValue>ГП-150-1500</DefaultValue>
+      </Parameter>
+      <Parameter Name="PNOM">
+        <Type>double</Type>
+        <Text>Pном, кВт</Text>
+        <Description>Номинальная мощность генератора</Description>
+        <DefaultValue>1500</DefaultValue>
+        <MaxValue>10000</MaxValue>
+        <MinValue>100</MinValue>
+      </Parameter>
+      <Parameter Name="E0">
+        <Type>double</Type>
+        <Text>E, В</Text>
+        <Description>Расчетная ЭДС генератора</Description>
+        <DefaultValue>242</DefaultValue>
+        <MaxValue>360</MaxValue>
+        <MinValue>10</MinValue>
+      </Parameter>
+      <Parameter Name="R">
+        <Type>double</Type>
+        <Text>R, мОм</Text>
+        <Description>Расчетное внутреннее сопротивление генератора</Description>
+        <DefaultValue>37.6</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="E" X="0" Y="-50" />
+    </Terminals>
+    <HelpLink>Генератор.rtf</HelpLink>  
+  </Element>
+
+  <!-- Щиток освещения -->
+  <Element Code="S">
+    <Text>Шиток освещения</Text>
+    <Description>Схемное обозначение щитка освещения</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>S</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Альтернативный параметр (для других версий программы)</Description>
+        <DefaultValue/>
+      </Parameter>
+      <Parameter Name="PNOM">
+        <Type>double</Type>
+        <Text>Pном, кВт</Text>
+        <Description>Мощность подключенной к щитку нагрузки</Description>
+        <DefaultValue>10</DefaultValue>
+        <MaxValue>100</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+    </Terminals>
+    <HelpLink>Щиток освещения.rtf</HelpLink>  
+  </Element>
+
+  <!-- Двигатель постоянного тока -->
+  <Element Code="M">
+    <Text>Электродвигатель</Text>
+    <Description>Схемное обозначение электродвигателя постоянного тока</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>M</DefaultValue>
+      </Parameter>      
+      <Parameter Name="TYPE">
+        <Type>string</Type>
+        <Text>Тип</Text>
+        <Description>Каталожное обозначение двигателя</Description>
+        <DefaultValue>2ПН225М</DefaultValue>
+      </Parameter>
+      <Parameter Name="PNOM">
+        <Type>double</Type>
+        <Text>Pном, кВт</Text>
+        <Description>Номинальная мощность двигателя</Description>
+        <DefaultValue>37</DefaultValue>
+        <MaxValue>200</MaxValue>
+        <MinValue>0.1</MinValue>
+      </Parameter>
+      <Parameter Name="UNOM">
+        <Type>double</Type>
+        <Text>Uном, В</Text>
+        <Description>Номинальное напряжение двигателя</Description>
+        <DefaultValue>220</DefaultValue>
+        <MaxValue>240</MaxValue>
+        <MinValue>10</MinValue>
+      </Parameter>
+      <Parameter Name="NNOM">
+        <Type>double</Type>
+        <Text>n, 1/мин</Text>
+        <Description>Номинальная частота вращения ротора</Description>
+        <DefaultValue>1500</DefaultValue>
+        <MaxValue>3000</MaxValue>
+        <MinValue>24</MinValue>
+      </Parameter>
+      <Parameter Name="KPD">
+        <Type>double</Type>
+        <Text>КПД, %</Text>
+        <Description>Коэффициент полезного действия двигателя</Description>
+        <DefaultValue>86.5</DefaultValue>
+        <MaxValue>98</MaxValue>
+        <MinValue>60</MinValue>
+      </Parameter>
+      <Parameter Name="IP">
+        <Type>double</Type>
+        <Text>Iпуск, А</Text>
+        <Description>Альтернативный параметр (для других версий программы)</Description>
+        <DefaultValue>412</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>1</MinValue>
+      </Parameter>
+      <Parameter Name="R0">
+        <Type>double</Type>
+        <Text>Rяо, мОм</Text>
+        <Description>Альтернативный параметр (для других версий программы)</Description>
+        <DefaultValue>184</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>10</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="B" X="0" Y="-50" />
+    </Terminals>
+    <HelpLink>Электродвигатель.rtf</HelpLink>  
+  </Element>
+
+  <!-- Короткое замыкание -->
+  <Element Code="SC">
+    <Text>Место КЗ</Text>
+    <Description>Схемное обозначение точки короткого замыкания</Description>
+    <Parameters>
+      <Parameter Name="TEXT">
+        <Type>string</Type>
+        <Text>Наименование</Text>
+        <Description>Диспетчерское наименование</Description>
+        <DefaultValue>SC</DefaultValue>
+      </Parameter>      
+      <Parameter Name="T">
+        <Type>double</Type>
+        <Text>t, с</Text>
+        <Description>Продолжительность короткого замыкания</Description>
+        <DefaultValue>0</DefaultValue>
+        <MaxValue>1000</MaxValue>
+        <MinValue>0</MinValue>
+      </Parameter>
+    </Parameters>
+    <Terminals>
+      <Terminal Name="SC" X="0" Y="0" />
+    </Terminals>
+    <HelpLink>Место КЗ.rtf</HelpLink>  
+  </Element>
+  
+  <!-- Соединение - линия -->
+  <Element Code="W">
+    <Text>Соединение линия</Text>
+    <Description>Соединение двух точек схемы.</Description>
+    <Parameters>
+    </Parameters>
+    <Terminals>
+    </Terminals>
+    <HelpLink />
+  </Element>
+
+  <!-- Соединение - шина -->
+  <Element Code="BUSBAR">
+    <Text>Соединение шина</Text>
+    <Description>Соединение, объединяющее все точки под длинне шины.</Description>
+    <Parameters>
+    </Parameters>
+    <Terminals>
+    </Terminals>
+    <HelpLink />
+  </Element>  
+
+</Elements>

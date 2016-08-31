@@ -1,0 +1,4 @@
+DocGenerator/obj/
+DocGenerator/bin/
+.vs/
+packages/
